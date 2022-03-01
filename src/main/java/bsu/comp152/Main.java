@@ -26,27 +26,29 @@ public class Main {
 
         System.out.println();
 
-       printArray(suit_names);
+        printArray(suit_names);
 
         System.out.println();
 
-        for (String element : suit_names) {
+        for(String element : suit_names){
             System.out.println(element);
         }
 
         System.out.println();
 
-        printArray(names);
-
-        System.out.println();
-
-        for (int element : myIntegers) {
+        for(String element : names){
             System.out.println(element);
         }
 
         System.out.println();
 
-        for (double element : myDoubles) {
+        for(int element : myIntegers){
+            System.out.println(element);
+        }
+
+        System.out.println();
+
+        for(double element : myDoubles){
             System.out.println(element);
         }
 
@@ -54,24 +56,22 @@ public class Main {
 
         System.out.println();
 
-        for (String element : names) {
+        for(String element : names){
             System.out.println(element);
         }
 
         System.out.println();
 
-        System.out.println(names[0] == null);
-        System.out.println(names[1] == null);
+        System.out.println(names[0]==null);
+        System.out.println(names[1]==null);
 
         System.out.println();
 
-        System.out.println(names[0].equals(null));
-        System.out.println(names[1].equals(null));
     }
 
-        public static void printArray (String[] arr){
-            for (int i = 0; i < arr.length; i++) {
-                System.out.println(arr[i]);
-            }
+    public static void printArray(String[] arr){
+        for(int i=0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
         }
     }
+}
