@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays; // This class contains "built-in" array functionality.
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -38,6 +39,7 @@ public class Main {
 
         System.out.println();
 
+        // We can call a toString method from Java's Arrays class.
         System.out.println(Arrays.toString(suit_names));
 
         // We can specify an element in an array at a given index.
@@ -103,8 +105,16 @@ public class Main {
 
         System.out.println();
 
+        System.out.println(arrayList2);
+
+        System.out.println();
+
         System.out.println("Call add to populate the ArrayList.");
-        arrayList2.add("Mike");
+        arrayList2.add("Anthony");
+
+        System.out.println(arrayList2);
+
+        System.out.println();
 
         // We can also get data from the user to include.
         Scanner console = new Scanner(System.in);
@@ -115,13 +125,14 @@ public class Main {
         System.out.println();
 
         System.out.println("The elements of arrayList2 are:");
-        System.out.println(arrayList2); // The ArrayList class contains a toString method!
+        // The ArrayList class contains a toString method!
+        System.out.println(arrayList2);
 
         System.out.println("Call set to overwrite the element at index 0.");
-        arrayList2.set(0, "Naomi");
+        arrayList2.set(0, "Lyra");
 
         System.out.println("The elements of arrayList2 are:");
-        System.out.println(arrayList2); // The ArrayList class contains a toString method!
+        System.out.println(arrayList2);
 
         System.out.println("Get the element at index 1 in arrayList2:");
         System.out.println(arrayList2.get(1));
@@ -139,14 +150,30 @@ public class Main {
         System.out.println(arrayList2.size());
 
         System.out.println("We can also read from file:");
-        File myfile = new File("names002");
-        // When I do the following, I put a throws clause in the
+
+        // I need a throws clause in the
         // method header.
+
+        File myfile = new File("names002");
         Scanner inputFile = new Scanner(myfile);
-        arrayList2.add(inputFile.nextLine());
+
+        /*for (int i = 0; i < 4; i++){
+            try {
+                arrayList2.add(inputFile.nextLine());
+            }
+            catch (NoSuchElementException e){
+                // Code to handle the exception
+                System.out.println("File has no more data.");
+            }
+        }*/
+
+        while (inputFile.hasNextLine()){
+            arrayList2.add(inputFile.nextLine());
+        }
 
         System.out.println("The elements of arrayList2 are:");
         System.out.println(arrayList2);
+
 
     }
 
@@ -160,9 +187,12 @@ public class Main {
 
     public static String arrayReturnString(String[] arr){
         String str = "[";
-        for(int i=0; i < arr.length; i++){
+        // We can loop through an array index-by-index.
+        for(int i=0; i < arr.length - 1; i++){
             str += arr[i] + " ";
         }
-        return str + "]";
+        str += arr[arr.length-1] + "]";
+        return str;
     }
+
 }
